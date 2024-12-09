@@ -1,0 +1,57 @@
+body {
+    font-family: Arial, sans-serif;
+    color: #5a5959;
+  }
+  
+.app-container {
+    max-width: 400px;
+    margin: 50px auto;
+    text-align: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .todo-input {
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .add-todo-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(120, 120, 250);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .add-todo-button:hover {
+    background-color: darkblue;
+  }
+  
+  /* Liste des tâches */
+  .todo-list-container {
+    margin-top: 20px;
+  }
+  
+  .todo-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .todo-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 18px;
+  }
+  
+  .todo-checkbox {
+    margin-right: 10px;
+  }
+  
