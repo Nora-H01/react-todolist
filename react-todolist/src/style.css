@@ -1,6 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     color: #5a5959;
+    display: grid;
+    place-items: center;
   }
   
 .app-container {
@@ -9,7 +11,7 @@ body {
     text-align: center;
     background: #fff;
     padding: 20px;
-    border-radius: 8px;
+    border-radius: 8px;    
   }
   
   .todo-input {
@@ -34,7 +36,6 @@ body {
     background-color: darkblue;
   }
   
-  /* Liste des tâches */
   .todo-list-container {
     margin-top: 20px;
   }
