@@ -4,8 +4,8 @@ import "./style.css";
 
 const App = () => {
   const initialTodos = [
-    { id: 1, name: "My first todo", done: false },
-    { id: 2, name: "My second todo", done: true },
+    { id: 1, name: "My first todo", done: false }, //false->non coché
+    { id: 2, name: "My second todo", done: false },
   ];
 
   const [todos, setTodos] = useState(initialTodos);
