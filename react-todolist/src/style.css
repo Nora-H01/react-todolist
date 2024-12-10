@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    color: #5a5959;
+    color: #5e6f72;
+    background-color: #a2babe;
     display: grid;
     place-items: center;
   }
