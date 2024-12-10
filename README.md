@@ -30,8 +30,8 @@ L'interface utilisateur permet de :
    ```bash
    npm install
 3. Lancez l'application en mode développement :
-  ```bash
-  npm start
+   ```bash
+     npm start
 4. Ouvrez votre navigateur et accédez à http://localhost:3000.
 
 ## Auteurs
