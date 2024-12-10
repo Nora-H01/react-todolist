@@ -2,32 +2,47 @@ import React, { useState } from "react";
 import TodoList from "./ToDoList";
 import "./style.css";
 
+// const App = () => {
+//   const initialTodos = [
+//     { id: 1, name: "My first todo", done: false }, //false->non coché
+//     { id: 2, name: "My second todo", done: false },
+//   ];
 const App = () => {
   const initialTodos = [
-    { id: 1, name: "My first todo", done: false }, //false->non coché
-    { id: 2, name: "My second todo", done: false },
+    { id: 1, name: "My first todo", state: "to do" }, 
+    { id: 2, name: "My second todo", state: "in progress" },
+    { id: 3, name: "My third todo", state: "done" },
   ];
 
   const [todos, setTodos] = useState(initialTodos);
   const [newTodo, setNewTodo] = useState("");
 
+  const updateTodoState = (id, newState) =>{
+    setTodos(
+      todos.map((todo)=>
+      todo.id === id ? {...todo, state: newState} : todo
+    )
+    );
+  };
+
   const addTodo = () => {
     if (newTodo.trim()) {
       setTodos([
         ...todos,
-        { id: Date.now(), name: newTodo, done: false },
+        { id: Date.now(), name: newTodo, state: "to do" },
       ]);
       setNewTodo("");
     }
   };
 
-  const toggleTodo = (id) => {
-    setTodos(
-      todos.map((todo) =>
-        todo.id === id ? { ...todo, done: !todo.done } : todo
-      )
-    );
-  };
+  // const toggleTodo = (id) => {
+  //   setTodos(
+  //     todos.map((todo) =>
+  //       todo.id === id ? { ...todo, done: !todo.done } : todo
+  //     )
+  //   );
+  // };
+
 
   return (
     <div className="app-container">
@@ -44,7 +59,7 @@ const App = () => {
           Add Todo
         </button>
       </div>
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <TodoList todos={todos} updateTodoState={updateTodoState} />
     </div>
   );
 };
