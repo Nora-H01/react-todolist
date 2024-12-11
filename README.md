@@ -34,5 +34,8 @@ L'interface utilisateur permet de :
      npm run dev
 4. Ouvrez votre navigateur et accédez à http://localhost:3000.
 
+## Vercel
+https://react-todolist-rust.vercel.app
+
 ## Auteurs
 Nom de l'auteur : Nora H.
