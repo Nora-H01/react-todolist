@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-const TodoList = ({ todos, updateTodoState }) => {
+const TodoList = ({ todos, updateTodoState, deleteTodo }) => {
   return (
     <div className="todo-list-container">
       <h2>Todos</h2>
@@ -10,15 +10,13 @@ const TodoList = ({ todos, updateTodoState }) => {
           <li key={todo.id} className={`todo-item ${todo.state}`}>
             <div className="todo-item-content">
               <span
-                className="state-indicator"
-                style={{
-                  backgroundColor:
-                    todo.state === "done"
-                      ? "green"
-                      : todo.state === "in progress"
-                      ? "orange"
-                      : "red",
-                }}
+                className={`state-indicator ${
+                  todo.state === "done"
+                    ? "state-done"
+                    : todo.state === "in progress"
+                    ? "state-in-progress"
+                    : "state-to-do"
+                }`}
               ></span>
               {todo.name}
             </div>
@@ -31,6 +29,12 @@ const TodoList = ({ todos, updateTodoState }) => {
               <option value="in progress">In Progress</option>
               <option value="done">Done</option>
             </select>
+            {/* Display the delete button if the task has been completed  */}
+            {todo.state === "done" && (
+              <button onClick={() => deleteTodo(todo.id)} className="delete-btn">
+                X
+              </button>
+            )}
           </li>
         ))}
       </ul>
