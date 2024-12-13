@@ -1,65 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Form from "./Form";
 import TodoList from "./ToDoList";
 import "./style.css";
 
-// const App = () => {
-//   const initialTodos = [
-//     { id: 1, name: "My first todo", done: false }, //false->non coché
-//     { id: 2, name: "My second todo", done: false },
-//   ];
+const LSKEY = "MyTodoApp.todos"; // key-> localStorage
+
 const App = () => {
-  const initialTodos = [
-    { id: 1, name: "My first todo", state: "to do" }, 
-    { id: 2, name: "My second todo", state: "in progress" },
-    { id: 3, name: "My third todo", state: "done" },
-  ];
+  const [todos, setTodos] = useState(() => {
+    // Retrieve data from localStorage on first rendering
+    const savedTodos = localStorage.getItem(LSKEY);
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
 
-  const [todos, setTodos] = useState(initialTodos);
-  const [newTodo, setNewTodo] = useState("");
+  // Save -> localStorage -> update `todos`
+  useEffect(() => {
+    localStorage.setItem(LSKEY, JSON.stringify(todos));
+  }, [todos]);
 
-  const updateTodoState = (id, newState) =>{
-    setTodos(
-      todos.map((todo)=>
-      todo.id === id ? {...todo, state: newState} : todo
-    )
-    );
-  };
-
-  const addTodo = () => {
-    if (newTodo.trim()) {
+  // add
+  const addTodo = (newTodoName) => {
+    if (newTodoName.trim()) {
       setTodos([
         ...todos,
-        { id: Date.now(), name: newTodo, state: "to do" },
+        { id: Date.now(), name: newTodoName, state: "to do" },
       ]);
-      setNewTodo("");
     }
   };
 
-  // const toggleTodo = (id) => {
-  //   setTodos(
-  //     todos.map((todo) =>
-  //       todo.id === id ? { ...todo, done: !todo.done } : todo
-  //     )
-  //   );
-  // };
+  //delete
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+  
 
+  // Update
+  const updateTodoState = (id, newState) => {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, state: newState } : todo
+      )
+    );
+  };
 
   return (
     <div className="app-container">
       <h1>My Todo App</h1>
-      <div>
-        <input
-          type="text"
-          placeholder="Type a new todo"
-          value={newTodo}
-          onChange={(e) => setNewTodo(e.target.value)}
-          className="todo-input"
-        />
-        <button onClick={addTodo} className="add-todo-button">
-          Add Todo
-        </button>
-      </div>
-      <TodoList todos={todos} updateTodoState={updateTodoState} />
+      <Form addTodo={addTodo} />
+      <TodoList todos={todos} updateTodoState={updateTodoState} deleteTodo={deleteTodo} />
     </div>
   );
 };
