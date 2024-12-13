@@ -46,6 +46,12 @@ const App = () => {
     setTodos(todos.filter((todo) => todo.state !== "done"));
   };
 
+  //counter
+  const getIncompleteCount = () => {
+    return todos.filter((todo) => todo.state !== "done").length;
+  };
+  
+
   return (
     <div className="app-container">
       <h1>My Todo App</h1>
@@ -56,6 +62,7 @@ const App = () => {
         deleteTodo={deleteTodo}
         deleteAllCompleted={deleteAllCompleted}
       />
+      <p className="todo-counter">{getIncompleteCount()} todos left</p>
     </div>
   );
 };

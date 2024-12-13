@@ -4,6 +4,7 @@ body {
     background-color: #a2babe;
     display: grid;
     place-items: center;
+    overflow: hidden;
   }
   
 .app-container {
@@ -94,8 +95,9 @@ body {
   }
 
   /* delete */
-  .delete-btn {
+  .delete-btn{
     background-color: red;
+    border-radius: 15px;
     font-size: 12px;
     color: white;
     border: none;
@@ -115,10 +117,26 @@ body {
     border: none;
     padding: 5px 10px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 10px;
   }
   
   .delete-all-btn:hover {
     background-color: darkorange;
+  }
+  
+  .delete-all-btn span{
+    background-color: rgba(255, 0, 0, 0.5);
+    padding: 5px 5px;
+    font-size: 10px;
+    border-radius: 15px;
+
+    position: relative;
+    top: -1.5px;
+}
+
+.todo-counter {
+    margin-top: 10px;
+    font-size: 10px;
+    color: #333;
   }
   

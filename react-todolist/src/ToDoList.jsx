@@ -40,7 +40,7 @@ const TodoList = ({ todos, updateTodoState, deleteTodo, deleteAllCompleted }) =>
       </ul>
       {/* Button to delete all completed tasks */}
       <button onClick={deleteAllCompleted} className="delete-all-btn">
-        Delete All
+        <span>X</span> All
       </button>
     </div>
   );
