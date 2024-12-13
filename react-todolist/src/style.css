@@ -79,3 +79,31 @@ body {
   .todo-item.done {
     color: green;
   }
+
+  /* states */
+.state-indicator.state-to-do {
+    background-color: red;
+  }
+  
+  .state-indicator.state-in-progress {
+    background-color: orange;
+  }
+  
+  .state-indicator.state-done {
+    background-color: green;
+  }
+
+  /* delete */
+  .delete-btn {
+    background-color: red;
+    font-size: 12px;
+    color: white;
+    border: none;
+    padding: 5px 5px;
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    background-color: darkred;
+  }
+  
