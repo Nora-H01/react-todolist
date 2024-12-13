@@ -1,7 +1,7 @@
 import React from "react";
 import "./style.css";
 
-const TodoList = ({ todos, updateTodoState, deleteTodo }) => {
+const TodoList = ({ todos, updateTodoState, deleteTodo, deleteAllCompleted }) => {
   return (
     <div className="todo-list-container">
       <h2>Todos</h2>
@@ -29,7 +29,7 @@ const TodoList = ({ todos, updateTodoState, deleteTodo }) => {
               <option value="in progress">In Progress</option>
               <option value="done">Done</option>
             </select>
-            {/* Display the delete button if the task has been completed  */}
+            {/* Display the delete button if the task has been completed */}
             {todo.state === "done" && (
               <button onClick={() => deleteTodo(todo.id)} className="delete-btn">
                 X
@@ -38,6 +38,10 @@ const TodoList = ({ todos, updateTodoState, deleteTodo }) => {
           </li>
         ))}
       </ul>
+      {/* Button to delete all completed tasks */}
+      <button onClick={deleteAllCompleted} className="delete-all-btn">
+        Delete All
+      </button>
     </div>
   );
 };

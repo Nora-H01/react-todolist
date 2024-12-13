@@ -3,7 +3,7 @@ import Form from "./Form";
 import TodoList from "./ToDoList";
 import "./style.css";
 
-const LSKEY = "MyTodoApp.todos"; // key-> localStorage
+const LSKEY = "MyTodoApp.todos"; //key localStorage
 
 const App = () => {
   const [todos, setTodos] = useState(() => {
@@ -12,7 +12,7 @@ const App = () => {
     return savedTodos ? JSON.parse(savedTodos) : [];
   });
 
-  // Save -> localStorage -> update `todos`
+  // save -> localStorage-> update `todos`
   useEffect(() => {
     localStorage.setItem(LSKEY, JSON.stringify(todos));
   }, [todos]);
@@ -27,13 +27,7 @@ const App = () => {
     }
   };
 
-  //delete
-  const deleteTodo = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id));
-  };
-  
-
-  // Update
+  //update
   const updateTodoState = (id, newState) => {
     setTodos(
       todos.map((todo) =>
@@ -42,11 +36,26 @@ const App = () => {
     );
   };
 
+  // delete
+  const deleteTodo = (id) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
+  // delete all
+  const deleteAllCompleted = () => {
+    setTodos(todos.filter((todo) => todo.state !== "done"));
+  };
+
   return (
     <div className="app-container">
       <h1>My Todo App</h1>
       <Form addTodo={addTodo} />
-      <TodoList todos={todos} updateTodoState={updateTodoState} deleteTodo={deleteTodo} />
+      <TodoList
+        todos={todos}
+        updateTodoState={updateTodoState}
+        deleteTodo={deleteTodo}
+        deleteAllCompleted={deleteAllCompleted}
+      />
     </div>
   );
 };

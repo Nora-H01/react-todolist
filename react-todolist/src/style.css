@@ -107,3 +107,18 @@ body {
     background-color: darkred;
   }
   
+  /* delete all */
+  .delete-all-btn {
+    background-color: orange;
+    font-size: 14px;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .delete-all-btn:hover {
+    background-color: darkorange;
+  }
+  
