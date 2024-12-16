@@ -15,16 +15,11 @@ body {
     padding: 20px;
     border-radius: 8px;    
   }
-  
-  .todo-input {
-    padding: 10px;
-    width: 80%;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  .add-todo-button {
+
+h4, h3, h2 {
+    margin: 5px;
+}
+.add-button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -34,7 +29,7 @@ body {
     cursor: pointer;
   }
   
-  .add-todo-button:hover {
+  .add-button:hover {
     background-color: darkblue;
   }
   
@@ -135,8 +130,30 @@ body {
 }
 
 .todo-counter {
-    margin-top: 10px;
+    margin: 2px 0 10px 0;
     font-size: 10px;
     color: #333;
+  }
+  
+/* category */
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin: 10px 0;
+  }
+  
+  .tab {
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    background-color: #6896be;
+    border: none;
+  }
+  
+  .tab.active {
+    background-color: #45627c;
+    font-weight: bold;
   }
   
