@@ -16,16 +16,17 @@ body {
     border-radius: 8px;    
   }
 
-h4, h3, h2 {
+h4, h3, h2, h1{
     margin: 5px;
 }
 .add-button {
-    padding: 10px 20px;
+    padding: 4px 15px;
+    margin: 10px;
     border: none;
     border-radius: 5px;
     background-color: rgb(120, 120, 250);
     color: white;
-    font-size: 14px;
+    font-size: 12px;
     cursor: pointer;
   }
   
@@ -139,7 +140,8 @@ h4, h3, h2 {
 .tabs {
     display: flex;
     justify-content: center;
-    margin: 10px 0;
+    margin: 10px 10px;
+    gap: 10px;
   }
   
   .tab {
