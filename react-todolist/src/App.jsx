@@ -12,17 +12,19 @@ const App = () => {
     return savedTodos ? JSON.parse(savedTodos) : [];
   });
 
+  const [activeTab, setActiveTab] = useState("private"); // state default
+
   // save -> localStorage-> update `todos`
   useEffect(() => {
     localStorage.setItem(LSKEY, JSON.stringify(todos));
   }, [todos]);
 
   // add
-  const addTodo = (newTodoName) => {
-    if (newTodoName.trim()) {
+  const addTodo = (newTodoName, category) => {
+    if (newTodoName.trim() && category) {
       setTodos([
         ...todos,
-        { id: Date.now(), name: newTodoName, state: "to do" },
+        { id: Date.now(), name: newTodoName, state: "to do", category: category },
       ]);
     }
   };
@@ -46,23 +48,42 @@ const App = () => {
     setTodos(todos.filter((todo) => todo.state !== "done"));
   };
 
-  //counter
-  const getIncompleteCount = () => {
-    return todos.filter((todo) => todo.state !== "done").length;
-  };
-  
+ 
+
+  // Filtrer les tâches selon l'onglet actif
+  const filteredTodos = todos.filter((todo) => todo.category === activeTab);
 
   return (
     <div className="app-container">
       <h1>My Todo App</h1>
-      <Form addTodo={addTodo} />
+
+      {/* Onglets */}
+      <div className="tabs">
+        <button
+          className={activeTab === "private" ? "tab active" : "tab"}
+          onClick={() => setActiveTab("private")}
+        >
+          Private
+        </button>
+        <button
+          className={activeTab === "work" ? "tab active" : "tab"}
+          onClick={() => setActiveTab("work")}
+        >
+          Work
+        </button>
+      </div>
+
+      {/* Formulaire */}
+      <Form addTodo={addTodo} activeTab={activeTab} />
+
+      {/* Liste des tâches filtrées */}
       <TodoList
-        todos={todos}
+        todos={filteredTodos}
         updateTodoState={updateTodoState}
         deleteTodo={deleteTodo}
         deleteAllCompleted={deleteAllCompleted}
       />
-      <p className="todo-counter">{getIncompleteCount()} todos left</p>
+
     </div>
   );
 };
