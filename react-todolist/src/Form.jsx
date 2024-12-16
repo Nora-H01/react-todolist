@@ -1,25 +1,27 @@
-import React, { useRef } from "react";
+import React, { useState } from "react";
 
-const Form = ({ addTodo }) => {
-  const inputRef = useRef();
+const Form = ({ addTodo, activeTab }) => {
+  const [taskName, setTaskName] = useState("");
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents page reloading
-    const newTodoName = inputRef.current.value;
-    addTodo(newTodoName); // Calls the function provided by App.jsx
-    inputRef.current.value = ""; // Reset
+    e.preventDefault();
+    if (taskName.trim()) {
+      addTodo(taskName, activeTab); // Utilise directement `activeTab` pour la catégorie
+      setTaskName(""); // Réinitialiser l'input
+    }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="todo-form">
       <input
         type="text"
-        placeholder="Write a new todo"
-        ref={inputRef}
-        className="todo-input"
+        value={taskName}
+        onChange={(e) => setTaskName(e.target.value)}
+        placeholder="Enter a task..."
+        className="task-input"
       />
-      <button type="submit" className="add-todo-button">
-        Add Todo
+      <button type="submit" className="add-button">
+        Add
       </button>
     </form>
   );
