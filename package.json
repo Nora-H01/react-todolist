@@ -1,0 +1,12 @@
+{
+  "name": "react-todolist",
+  "version": "1.0.0",
+  "description": "Cette application est une simple gestion de tâches (\"ToDo List\") construite avec React. Elle permet de gérer des tâches en ajoutant, modifiant leur statut et les classant dans différents états tels que :\r - **To Do** : Tâche non commencée.\r - **In Progress** : Tâche en cours.\r - **Done** : Tâche terminée.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
