@@ -9,8 +9,9 @@ Cette application est une simple gestion de tâches ("ToDo List") construite ave
 
 L'interface utilisateur permet de :
 1. Ajouter une nouvelle tâche.
-2. Changer l'état d'une tâche en utilisant un menu déroulant.
-3. Visualiser l'état actuel de chaque tâche avec un indicateur coloré.
+2. Selectionner une date avec le calendrier.
+3. Changer l'état d'une tâche en utilisant un menu déroulant.
+4. Visualiser l'état actuel de chaque tâche avec un indicateur coloré.
 
 ## Fonctionnalités
 
