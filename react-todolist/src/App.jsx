@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Form from "./Form";
 import TodoList from "./ToDoList";
-import "./style.css";
+import "./css/style.css";
 
 const LSKEY = "MyTodoApp.todos"; //key localStorage
 
@@ -20,11 +20,16 @@ const App = () => {
   }, [todos]);
 
   // add
-  const addTodo = (newTodoName, category) => {
+  const addTodo = (newTodoName, category, date) => {
     if (newTodoName.trim() && category) {
       setTodos([
         ...todos,
-        { id: Date.now(), name: newTodoName, state: "to do", category: category },
+        { id: Date.now(), 
+          date: date ? date.toLocaleDateString() : "No date", 
+          name: newTodoName, 
+          state: "to do", 
+          category: category,
+        },
       ]);
     }
   };
@@ -47,8 +52,6 @@ const App = () => {
   const deleteAllCompleted = () => {
     setTodos(todos.filter((todo) => todo.state !== "done"));
   };
-
- 
 
   // Filtrer les tâches selon l'onglet actif
   const filteredTodos = todos.filter((todo) => todo.category === activeTab);
@@ -73,10 +76,8 @@ const App = () => {
         </button>
       </div>
 
-      {/* Formulaire */}
       <Form addTodo={addTodo} activeTab={activeTab} />
 
-      {/* Liste des tâches filtrées */}
       <TodoList
         todos={filteredTodos}
         updateTodoState={updateTodoState}
